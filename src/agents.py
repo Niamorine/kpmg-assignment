@@ -1,9 +1,9 @@
 import os
 from crewai import Agent, LLM
-from .tools.calories import calculate_target_calories, calculate_daily_caloric_needs
-from .tools.database import read_calendar, get_existing_meals
-from .tools.food_api_client import search_ingredients
-from .tools.user_preferences import get_user_preferences
+from tools.calories import calculate_target_calories, calculate_daily_caloric_needs
+from tools.database import read_calendar, get_existing_meals
+from tools.food_api_client import search_ingredients
+from tools.user_preferences import get_user_preferences
 
 
 

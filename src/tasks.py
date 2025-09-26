@@ -1,5 +1,5 @@
 from crewai import Task
-from .agents import calendar_agent, nutritionist_agent, meal_planner_agent, presenter_agent
+from agents import calendar_agent, nutritionist_agent, meal_planner_agent, presenter_agent
 
 
 

@@ -1,17 +1,11 @@
 [project]
-name = "kpmg-assignment"
+name = "meal-planner-agent"
 version = "0.1.0"
-description = "Add your description here"
+description = "A meal planner agent with CrewAI"
 readme = "README.md"
 requires-python = "==3.12.10"
 dependencies = [
     "crewai>=0.193.2",
-    "crewai-tools>=0.73.1",
     "dotenv>=0.9.9",
-    "fastapi>=0.117.1",
-    "langchain>=0.3.27",
-    "langchain-ibm>=0.3.18",
-    "langgraph>=0.6.7",
     "requests>=2.32.5",
-    "uvicorn>=0.37.0",
 ]
