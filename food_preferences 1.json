@@ -13,7 +13,6 @@
     "avocado",
     "almonds",
     "greek yogurt",
-    "oatmeal",
     "banana",
     "blueberries",
     "olive oil",
@@ -27,6 +26,7 @@
     "lentils"
   ],
   "dislikes": [
+    "oatmeal",
     "beef",
     "pork",
     "lamb",

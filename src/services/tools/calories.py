@@ -1,7 +1,5 @@
 from typing import Literal, Annotated
-from pydantic import Field
 from crewai.tools import tool
-from colorama import Fore
 
 
 def _pounds_to_kg(pounds: float) -> float:
@@ -28,15 +26,13 @@ def _calculate_bmr(age: int, weight_lb: float, height_ft: int, height_in: int, s
 
 
 def _calories_from_activity(weight_lb: float, duration_min: int, intensity: str) -> float:
-    """
-    Estimates calories spent during physical activity using MET values.
-    Intensity can be: "none", "low", "medium", "high".
+    """Intensity can be: "none", "low", "medium", "high".
     """
     mets_values = {
         "none": 0,
-        "low": 3,     # ex: yoga
-        "medium": 6,  # ex: running
-        "high": 8     # ex: rock climbing
+        "low": 3,
+        "medium": 6,
+        "high": 8
     }
     
     weight_kg = _pounds_to_kg(weight_lb)
@@ -59,22 +55,16 @@ def calculate_daily_caloric_needs(
     Calculates the total daily energy expenditure (TDEE) in calories.
     If there's no activity for the day, select "none" as the intensity.
     """
-    print(Fore.RED + f"Calculate calories called with age={age}, weight_lb={weight_lb}, height_ft={height_ft}, height_in={height_in}, activity_duration={activity_duration}, activity_intensity={activity_intensity}" + Fore.RESET)
 
     sex: str = "male"
-    activity_factor: float = 1.2
+    activity_factor: float = 1.2 # user sedentary factor since we use the activity in a second time
 
+    # Formulas from https://steelfitusa.com/blogs/health-and-wellness/calculate-tdee
     bmr = _calculate_bmr(age, weight_lb, height_ft, height_in, sex)
-    base_tdee = bmr * activity_factor # user sedentary factor
+    base_tdee = bmr * activity_factor
     activity_cals = _calories_from_activity(weight_lb, activity_duration, activity_intensity)
     total_tdee = base_tdee + activity_cals
     
-    # return {
-    #     "BMR": round(bmr, 2),
-    #     "Base_TDEE": round(base_tdee, 2),
-    #     "Activity_Cals": round(activity_cals, 2),
-    #     "Total_TDEE": round(total_tdee, 2)
-    # }
     return total_tdee
 
 @tool
