@@ -4,9 +4,8 @@ from dotenv import load_dotenv
 
 from crewai import Crew, Process
 
-from .agents import calendar_agent, nutritionist_agent, meal_planner_agent, presenter_agent
-from .tasks import activity_task, target_calories_task, meals_task, present_task
-
+from agents import calendar_agent, nutritionist_agent, meal_planner_agent, presenter_agent
+from tasks import activity_task, target_calories_task, meals_task, present_task
 
 load_dotenv()
 
@@ -22,28 +21,6 @@ def get_args():
     args = parser.parse_args()
     return args
 
-
-# age = args.age
-# weight = args.weight
-# height_ft = args.height_ft
-# height_in = args.height_in
-# day = args.day
-# objective = args.objective
-# age = 45
-# weight = 300
-# height_ft = 6
-# height_in = 5
-# day = "tuesday"
-# objective = "loss"
-
-
-
-
-
-
-
-
-
 meals_crew = Crew(
     agents=[calendar_agent, nutritionist_agent, meal_planner_agent, presenter_agent],
     tasks=[activity_task, target_calories_task, meals_task, present_task],
@@ -51,23 +28,6 @@ meals_crew = Crew(
     verbose=True
 )
 
-
-
-# t_begin = time()
-# result = meals_crew.kickoff(
-#     inputs={
-#         "age": age,
-#         "weight": weight,
-#         "height_ft": height_ft,
-#         "height_in": height_in,
-#         "day": day,
-#         "objective": objective
-#     }
-# )
-
-# print(result)
-
-# print(f"Total time taken: {time() - t_begin}")
 
 def main():
     args = get_args()
