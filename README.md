@@ -4,6 +4,10 @@ This project was realized by Romain Le Métayer as an assigment for a technical 
 
 It is a personalized meal planning AI agent powered by CrewAI and IBM WatsonX LLM. This tool generates daily meal plans tailored to user preferences, physical activity, and nutritional goals.
 
+## Overview of the architecture
+
+![Flow Diagram](flow_diagram.png)
+
 ## Features
 
 - Reads user food preferences from a JSON file
